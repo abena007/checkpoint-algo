@@ -1,0 +1,34 @@
+ALGORITHM algorithm_name
+VAR
+    i,len,numVoyel,numWord = INTEGER
+    sentence = STRING
+BEGIN
+REPEAT
+    write ("please write a sentence that ends with a '.' ")
+    read(sentence)
+    len := length(sentence)
+UNTIL (sentence[len-1] == ".")
+    numWord := 1
+    numVoyel := 0
+    FOR i FROM 0 TO len STEP 1  DO
+        SWITCH (sentence[i]) DO
+            case " " : numWord :=numWord+1 ; BREAK
+            case "a" : numVoyel:=numVoyel+1 ; BREAK
+            case "A" : numVoyel:=numVoyel+1 ; BREAK
+            case "e" : numVoyel:=numVoyel+1 ; BREAK
+            case "E" : numVoyel:=numVoyel+1 ; BREAK
+            case "u" : numVoyel:=numVoyel+1 ; BREAK
+            case "U" : numVoyel:=numVoyel+1 ; BREAK
+            case "o" : numVoyel:=numVoyel+1 ; BREAK
+            case "O" : numVoyel:=numVoyel+1 ; BREAK
+            case "i" : numVoyel:=numVoyel+1 ; BREAK
+            case "I" : numVoyel:=numVoyel+1 ; BREAK
+            case "y" : numVoyel:=numVoyel+1 ; BREAK
+            case "Y" : numVoyel:=numVoyel+1 ; BREAK
+            default :
+        END_SWITCH
+    END_FOR
+    write("number of characters :",len)
+    write("number of words :", numWord)
+    write("number of voyals :",numVoyel)
+END

@@ -1,0 +1,6 @@
+ALGORITHM 
+VAR
+    set_declarations
+BEGIN
+    set_instructions
+END
