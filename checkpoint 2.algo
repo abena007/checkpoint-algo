@@ -1,6 +1,129 @@
-ALGORITHM 
+//Prob 1 ------------------------------------------
+ALGORITHM checkpoint 2
 VAR
-    set_declarations
+    arr1 : ARRAY_OF INTEGER[n1];
+    arr2 : ARRAY_OF INTEGER [n2]
+    n1,n2,j,i,sum :INTEGER 
+
 BEGIN
-    set_instructions
+    write ("please enter the size of array 1")
+    read (n1)
+    write ("please enter the size of array 2")
+    read (n2)
+    FOR i FROM 0 TO n1-1 STEP 1  DO
+    write ("array1[",i+1,"]")
+    read ( arr1[i])
+    END_FOR
+    FOR i FROM 0 TO n2-1 STEP 1  DO
+    write ("array1[",i+1,"]")
+    read ( arr2[i])
+    END_FOR 
+    
+    sum:=0
+    FOR i FROM 0 TO n1-1 STEP 1  DO
+        FOR j FROM 0 TO n2-1 STEP 1  DO
+        exist:= FALSE
+            IF (arr1[i]==arr2[j]) THEN
+                exist:= TRUE
+            ELSE_IF(exist == FALSE) THEN
+                sum:=sum+arr1[i]
+            END_FOR
+    END_FOR
+    FOR j FROM 0 TO n2-1 STEP 1  DO
+        FOR i FROM 0 TO n1-1 STEP 1  DO
+        exist:= FALSE
+            IF (arr1[i]==arr2[j]) THEN
+                exist:= TRUE
+            ELSE_IF(exist == FALSE) THEN
+                sum:=sum+arr1[j]
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+
+
+//Prob 1 hash-table method-------------------------------------------
+ALGORITHM Prob1_HTable
+VAR
+    htab : HASH_TABLE<INTEGER,INTEGER>
+    htab2:HASH_TABLE<INTEGER,INTEGER>
+    sum,n1,n2,j,i :INTEGER 
+BEGIN
+    write ("please enter the size of htab1")
+    read (n1)
+    write ("please enter the size of htab2")
+    read (n2)
+    sum:=0
+    FOR i FROM 0 TO n1-1 STEP 1  DO
+    write ("htab1[",i+1,"]")
+    read ( value)
+    htab.insert(i,value)
+    END_FOR
+    FOR j FROM 0 TO n2-1 STEP 1  DO
+    write ("htab2[",j+1,"]")
+    read ( value)
+    htab.insert(j,value)
+    END_FOR
+    FOR i FROM 0 TO n1-1 STEP 1  DO
+        IF htab2.lookup(htab.get(i))==FALSE THEN
+            sum:=sum+htab.get(i)
+        END_FOR
+END_FOR
+END
+
+
+
+// Prob 2-------------------
+ALGORITHM checkpoint solution 2
+VAR
+    i,j,set1,set2: INTEGER
+
+BEGIN
+
+REPEAT
+    write ("please enter the size of set 1")
+    read (set1)
+    write ("please enter the size of set2")
+    read (set2)
+UNTIL (unique(set1)==TRUE && unique(set2)==TRUE)
+    ToString(set1)
+    ToString(set2)
+    
+    FOR i FROM 0 TO set1.length STEP 1  DO
+        FOR j FROM 0 TO set2.length-1 STEP 1  DO
+        exist:= FALSE
+            IF (arr1[i]==arr2[j]) THEN
+                exist:= TRUE
+            ELSE_IF(exist == FALSE) THEN
+                sum:=sum+ToInteger(set1[i])
+            END_FOR
+    END_FOR
+    FOR j FROM 0 TO n2-1 STEP 1  DO
+        FOR i FROM 0 TO n1-1 STEP 1  DO
+        exist:= FALSE
+            IF (set1[i]==set2[j]) THEN
+                exist:= TRUE
+            ELSE_IF(exist == FALSE) THEN
+                sum:=sum+ToInteger(set1[j])
+            END_IF
+        END_FOR
+    END_FOR
+END
+
+FUNCTION unique(ch : STRING) : BOOLEAN
+VAR
+    j,occ = INTEGER 
+BEGIN
+    REPEAT
+        j:=0
+        FOR i FROM 0 TO ch.length-1 STEP 1  DO
+            occ:=0
+            IF (ch[j]==ch[i]) THEN
+                occ += 1
+            END_IF
+        j+=1
+        END_FOR
+    UNTIL (j == ch.length-1 || occ == 2)
+    RETURN occ == 1 ;
 END
